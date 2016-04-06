@@ -3,7 +3,12 @@
 
 Coche::Coche()
 {
-	c = new Cubo(3.0f);
+	lCubo = 2.5f;
+	rRueda = 0.7f;
+	anchuraRueda = 1.0f;
+	rFaro = 0.5f;
+	anchuraFaro = 0.4f;
+	c = new Cubo(lCubo);
 }
 
 
@@ -11,7 +16,7 @@ Coche::~Coche()
 {
 }
 
-void Coche::dibuja(GLUquadricObj* q, double lCubo, double rRueda)
+void Coche::dibuja(GLUquadricObj* q)
 {
 	glMatrixMode(GL_MODELVIEW);
 	//dibujamos el chasis
@@ -23,29 +28,40 @@ void Coche::dibuja(GLUquadricObj* q, double lCubo, double rRueda)
 	//Dibujamos las ruedas
 	glPushMatrix(); 
 	glTranslated(-lCubo, 0.0f, lCubo);
-	dibujaRueda(rRueda, q, 1.5);
+	dibujaRueda(q);
 	glPopMatrix();
 
 	glPushMatrix();
 	glTranslated(lCubo, 0.0f, lCubo);
-	dibujaRueda(rRueda, q, 1.5);
+	dibujaRueda(q);
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(lCubo, 0.0f, -lCubo-1.5);
-	dibujaRueda(rRueda, q, 1.5);
+	glTranslated(lCubo, 0.0f, -lCubo-anchuraRueda);
+	dibujaRueda(q);
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(-lCubo, 0.0f, -lCubo-1.5);
-	dibujaRueda(rRueda, q, 1.5);
+	glTranslated(-lCubo, 0.0f, -lCubo-anchuraRueda);
+	dibujaRueda(q);
+	glPopMatrix();
+
+	//Dibujamos las luces
+	glPushMatrix();
+	glTranslated(lCubo, 0.3*lCubo, -0.4*lCubo);
+	dibujaLuces(q);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(lCubo, 0.3*lCubo, 0.4*lCubo);
+	dibujaLuces(q);
 	glPopMatrix();
 }
 
-void Coche::dibujaRueda(double rRueda, GLUquadricObj* q, double anchuraRueda)
+void Coche::dibujaRueda(GLUquadricObj* q)
 {
 	glMatrixMode(GL_MODELVIEW);
-	glColor3f(0.0f, 0.0f, 0.0f);
+	glColor3f(0.0f, 0.0f, 0.0f); //negro
 	gluCylinder(q, rRueda*2, rRueda*2, anchuraRueda, 32, 32);
 	gluDisk(q, 0.0f, rRueda * 2, 32, 32);
 	glPushMatrix();
@@ -58,4 +74,19 @@ void Coche::dibujaChasis()
 {
 	glColor3f(1.0f, 0.0f, 1.0f); //rosa
 	c->dibuja();
+}
+
+void Coche::dibujaLuces(GLUquadricObj* q)
+{
+	glMatrixMode(GL_MODELVIEW);
+	glColor3f(0.0f, 0.6f, 0.0f); 
+	glPushMatrix();
+	glRotated(90, 0, 1, 0);
+	gluCylinder(q, 0.9*rFaro, rFaro, anchuraFaro, 32, 32);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(anchuraFaro, 0.0f, 0.0f);
+	glRotated(90, 0, 1, 0);
+	gluDisk(q, 0.0f, rFaro, 32, 32);
+	glPopMatrix();
 }

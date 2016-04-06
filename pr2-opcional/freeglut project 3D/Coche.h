@@ -7,10 +7,16 @@ class Coche
 public:
 	Coche();
 	~Coche();
-	void dibuja(GLUquadricObj* q, double lCubo, double rRueda);
+	void dibuja(GLUquadricObj* q);
 private:
 	Cubo* c;
-	void dibujaRueda(double rRueda, GLUquadricObj* q, double anchuraRueda);
+	double lCubo;
+	double rRueda;
+	double anchuraRueda;
+	double rFaro;
+	double anchuraFaro;
+	void dibujaRueda(GLUquadricObj* q);
 	void dibujaChasis();
+	void dibujaLuces(GLUquadricObj* q);
 };
 

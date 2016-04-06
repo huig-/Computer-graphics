@@ -102,7 +102,7 @@ void display(void) {
 		glEnd();
 		 		
 		// Drawing the scene	
-		coche->dibuja(q, 3.0f, 1.0f);
+		coche->dibuja(q);
 		
 
 	glPopMatrix();
