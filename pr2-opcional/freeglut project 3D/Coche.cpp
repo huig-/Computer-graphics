@@ -5,9 +5,11 @@ Coche::Coche()
 {
 	lCubo = 2.5f;
 	rRueda = 0.7f;
-	anchuraRueda = 1.0f;
+	anchuraRueda = 1.3f;
 	rFaro = 0.5f;
 	anchuraFaro = 0.4f;
+	posicionInicial = 0;
+	anguloInicial = 0;
 	c = new Cubo(lCubo);
 }
 
@@ -19,10 +21,26 @@ Coche::~Coche()
 void Coche::dibuja(GLUquadricObj* q)
 {
 	glMatrixMode(GL_MODELVIEW);
+	//Avanzar coche
+	glTranslated(posicionInicial, 0.0f, 0.0f);
+	glPushMatrix();
+	glTranslated(posicionInicial, 0.0f, 0.0f);
+	glPopMatrix();
 	//dibujamos el chasis
 	glPushMatrix();
 	glTranslated(0.0f, lCubo, 0.0f);
 	dibujaChasis();
+	glPopMatrix();
+
+	//Dibujamos las luces
+	glPushMatrix();
+	glTranslated(lCubo, 0.3*lCubo, -0.4*lCubo);
+	dibujaLuces(q);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(lCubo, 0.3*lCubo, 0.4*lCubo);
+	dibujaLuces(q);
 	glPopMatrix();
 	
 	//Dibujamos las ruedas
@@ -45,23 +63,13 @@ void Coche::dibuja(GLUquadricObj* q)
 	glTranslated(-lCubo, 0.0f, -lCubo-anchuraRueda);
 	dibujaRueda(q);
 	glPopMatrix();
-
-	//Dibujamos las luces
-	glPushMatrix();
-	glTranslated(lCubo, 0.3*lCubo, -0.4*lCubo);
-	dibujaLuces(q);
-	glPopMatrix();
-
-	glPushMatrix();
-	glTranslated(lCubo, 0.3*lCubo, 0.4*lCubo);
-	dibujaLuces(q);
-	glPopMatrix();
 }
 
 void Coche::dibujaRueda(GLUquadricObj* q)
 {
 	glMatrixMode(GL_MODELVIEW);
 	glColor3f(0.0f, 0.0f, 0.0f); //negro
+	glRotated(anguloInicial, 0, 0, 1);
 	gluCylinder(q, rRueda*2, rRueda*2, anchuraRueda, 32, 32);
 	gluDisk(q, 0.0f, rRueda * 2, 32, 32);
 	glPushMatrix();
@@ -89,4 +97,10 @@ void Coche::dibujaLuces(GLUquadricObj* q)
 	glRotated(90, 0, 1, 0);
 	gluDisk(q, 0.0f, rFaro, 32, 32);
 	glPopMatrix();
+}
+
+void Coche::avanza(double inc)
+{
+	posicionInicial += inc;
+	anguloInicial += 45 * inc;
 }
