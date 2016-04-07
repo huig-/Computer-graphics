@@ -8,7 +8,6 @@
 #include <iostream>
 #include "Iman.h"
 #include "Paralelepipedo.h"
-#include "Hipotrocoide.h"
 using namespace std;
 
 // Freeglut parameters
@@ -30,7 +29,6 @@ GLdouble upX=0, upY=1, upZ=0;
 GLfloat angX, angY, angZ; 
 Iman *im;
 Paralelepipedo *brazoIzq, *brazoDer, *poloIzq, *poloDer;
-Hipotrocoide *hip;
 
 void buildSceneObjects() {	 
     angX=0.0f;
@@ -43,7 +41,6 @@ void buildSceneObjects() {
 	double l = 4;
 	int nP = 20;
 	im = new Iman(nQ, rInt, rExt, h);
-	hip = new Hipotrocoide(nP, nQ);
 	brazoDer = new Paralelepipedo(rInt, rExt, 0, h, l);
 	brazoIzq = new Paralelepipedo(-rInt, -rExt, 0, h, l);
 	poloIzq = new Paralelepipedo(-rInt, -rExt, l, h, 2);
@@ -115,15 +112,14 @@ void display(void) {
 		glEnd();
 		 		
 		// Drawing the scene	 
-		//im->dibuja();
-		//glColor3f(1.0f, 0.0f, 0.0f);
-		//brazoDer->dibuja();
-		//glColor3f(0.0f, 0.0f, 1.0f);
-		//brazoIzq->dibuja();
-		//glColor3f(0.9f, 0.9f, 0.9f);
-		//poloDer->dibuja();
-		//poloIzq->dibuja();
-		hip->dibuja();
+		im->dibuja();
+		glColor3f(1.0f, 0.0f, 0.0f);
+		brazoDer->dibuja();
+		glColor3f(0.0f, 0.0f, 1.0f);
+		brazoIzq->dibuja();
+		glColor3f(0.9f, 0.9f, 0.9f);
+		poloDer->dibuja();
+		poloIzq->dibuja();
 
 
 	glPopMatrix();
