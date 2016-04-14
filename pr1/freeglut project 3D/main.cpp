@@ -42,7 +42,7 @@ void buildSceneObjects() {
 	int nP = 20;
 	im = new Iman(nQ, rInt, rExt, h);
 	brazoDer = new Paralelepipedo(rInt, rExt, 0, h, l);
-	brazoIzq = new Paralelepipedo(-rInt, -rExt, 0, h, l);
+	brazoIzq = new Paralelepipedo(-rExt, -rInt, 0, h, l);
 	poloIzq = new Paralelepipedo(-rInt, -rExt, l, h, 2);
 	poloDer = new Paralelepipedo(rInt, rExt, l, h, 2);
 }

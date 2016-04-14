@@ -30,9 +30,6 @@
     <ClCompile Include="Cubo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Arbol.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Cara.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

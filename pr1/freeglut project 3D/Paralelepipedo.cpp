@@ -11,15 +11,15 @@ Paralelepipedo::Paralelepipedo(double rInt, double rExt, double z0, double h, do
 	cara = new Cara*[6];
 
 	// Vértices de abajo
-	vertice[0] = new PuntoVector3D(rInt, 0, z0, 1);
-	vertice[1] = new PuntoVector3D(rExt, 0, z0, 1);
-	vertice[2] = new PuntoVector3D(rExt, 0, l+z0, 1);
-	vertice[3] = new PuntoVector3D(rInt, 0, l+z0, 1);
+	vertice[0] = new PuntoVector3D(rExt, 0, z0, 1);
+	vertice[1] = new PuntoVector3D(rExt, 0, z0+l, 1);
+	vertice[2] = new PuntoVector3D(rInt, 0, l+z0, 1);
+	vertice[3] = new PuntoVector3D(rInt, 0, z0, 1);
 	// Vértices de arriba
-	vertice[4] = new PuntoVector3D(rInt, h, z0, 1);
-	vertice[5] = new PuntoVector3D(rExt, h, z0, 1);
-	vertice[6] = new PuntoVector3D(rExt, h, l+z0, 1);
-	vertice[7] = new PuntoVector3D(rInt, h, l+z0, 1);
+	vertice[4] = new PuntoVector3D(rExt, h, z0, 1);
+	vertice[5] = new PuntoVector3D(rExt, h, z0+l, 1);
+	vertice[6] = new PuntoVector3D(rInt, h, l+z0, 1);
+	vertice[7] = new PuntoVector3D(rInt, h, z0, 1);
 
 	// Normales caras frontal y trasera	 
 	normal[0] = new PuntoVector3D(0.0f, 0.0f, 1.0f, 0);
@@ -32,6 +32,51 @@ Paralelepipedo::Paralelepipedo(double rInt, double rExt, double z0, double h, do
 	normal[5] = new PuntoVector3D(0.0f, -1.0f, 0.0f, 0);
 
 	// Caras frontal y trasera
+	/*
+	VerticeNormal** aVN = new VerticeNormal*[4];
+	aVN[0] = new VerticeNormal(0, 0);
+	aVN[1] = new VerticeNormal(4, 0);
+	aVN[2] = new VerticeNormal(7, 0);
+	aVN[3] = new VerticeNormal(3, 0);
+	cara[0] = new Cara(4, aVN);
+
+	aVN = new VerticeNormal*[4];
+	aVN[0] = new VerticeNormal(1, 1);
+	aVN[1] = new VerticeNormal(2, 1);
+	aVN[2] = new VerticeNormal(6, 1);
+	aVN[3] = new VerticeNormal(5, 1);
+	cara[1] = new Cara(4, aVN);
+
+	// Caras lateral izquierda y derecha
+	aVN = new VerticeNormal*[4];
+	aVN[0] = new VerticeNormal(0, 2);
+	aVN[1] = new VerticeNormal(1, 2);
+	aVN[2] = new VerticeNormal(5, 2);
+	aVN[3] = new VerticeNormal(4, 2);
+	cara[2] = new Cara(4, aVN);
+
+	aVN = new VerticeNormal*[4];
+	aVN[0] = new VerticeNormal(2, 3);
+	aVN[1] = new VerticeNormal(3, 3);
+	aVN[2] = new VerticeNormal(7, 3);
+	aVN[3] = new VerticeNormal(6, 3);
+	cara[3] = new Cara(4, aVN);
+
+	// Caras superior e inferior
+	aVN = new VerticeNormal*[4];
+	aVN[0] = new VerticeNormal(4, 4);
+	aVN[1] = new VerticeNormal(5, 4);
+	aVN[2] = new VerticeNormal(6, 4);
+	aVN[3] = new VerticeNormal(7, 4);
+	cara[4] = new Cara(4, aVN);
+
+	aVN = new VerticeNormal*[4];
+	aVN[0] = new VerticeNormal(0, 5);
+	aVN[1] = new VerticeNormal(3, 5);
+	aVN[2] = new VerticeNormal(2, 5);
+	aVN[3] = new VerticeNormal(1, 5);
+	cara[5] = new Cara(4, aVN);*/
+
 	VerticeNormal** aVN = new VerticeNormal*[4];
 	aVN[0] = new VerticeNormal(0, 0);
 	aVN[1] = new VerticeNormal(4, 0);

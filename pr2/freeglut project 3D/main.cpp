@@ -119,6 +119,14 @@ void display(void) {
 
 		glPushMatrix();
 		glTranslated(-2.0f, 0.0f, -1.2f);
+		//glScaled(2.0f, 2.0f, 2.0f);
+		arbol->alamo(q, 0.35f, 4.0f, 2.0f, 1.8f);
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslated(-2.0f, 0.0f, -1.2f);
+		glRotated(180, 1.0f, 0.0f, 0.0f);
+		//glScaled(2.0f, 2.0f, 2.0f);
 		arbol->alamo(q, 0.35f, 4.0f, 2.0f, 1.8f);
 		glPopMatrix();
 		
