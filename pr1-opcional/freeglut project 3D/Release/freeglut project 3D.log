@@ -1,0 +1,31 @@
+﻿Compilación iniciada a las 14/04/2016 18:59:13.
+     1>Proyecto "C:\Users\usuario_local\Downloads\Computer-graphics\pr1-opcional\freeglut project 3D\freeglut project 3D.vcxproj" en el nodo 2 (Build destinos).
+     1>ClCompile:
+         C:\software\programacion\MSVStudio2013\VC\bin\CL.exe /c /I"C:\Users\usuario_local\Downloads\Computer-graphics\pr1-opcional\freeglut\include\\" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Cara.cpp Hipotrocoide.cpp main.cpp Malla.cpp PuntoVector3D.cpp VerticeNormal.cpp
+         Cara.cpp
+         Hipotrocoide.cpp
+     1>Hipotrocoide.cpp(14): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>Hipotrocoide.cpp(42): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>Hipotrocoide.cpp(84): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>Hipotrocoide.cpp(90): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>Hipotrocoide.cpp(98): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>Hipotrocoide.cpp(100): warning C4244: 'argumento' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+         main.cpp
+         Malla.cpp
+         PuntoVector3D.cpp
+         VerticeNormal.cpp
+       Link:
+         C:\software\programacion\MSVStudio2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\usuario_local\Downloads\Computer-graphics\pr1-opcional\Release\freeglut project 3D.exe" /NOLOGO /LIBPATH:"C:\Users\usuario_local\Downloads\Computer-graphics\pr1-opcional\freeglut\lib\\" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\usuario_local\Downloads\Computer-graphics\pr1-opcional\Release\freeglut project 3D.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\usuario_local\Downloads\Computer-graphics\pr1-opcional\Release\freeglut project 3D.lib" /MACHINE:X86 /SAFESEH Release\Cara.obj
+         Release\Hipotrocoide.obj
+         Release\main.obj
+         Release\Malla.obj
+         Release\PuntoVector3D.obj
+         Release\VerticeNormal.obj
+         Generando código
+         Generación de código finalizada
+         freeglut project 3D.vcxproj -> C:\Users\usuario_local\Downloads\Computer-graphics\pr1-opcional\Release\freeglut project 3D.exe
+     1>Compilación del proyecto terminada "C:\Users\usuario_local\Downloads\Computer-graphics\pr1-opcional\freeglut project 3D\freeglut project 3D.vcxproj" (Build destinos).
+
+Compilación correcta.
+
+Tiempo transcurrido 00:00:01.51
