@@ -7,10 +7,7 @@
 
 #include <iostream>
 #include "Arbol.h"
-<<<<<<< HEAD
 #include "Camara.h"
-=======
->>>>>>> a18ee07f7ba1c514938b790abbb3a9e7104b69f7
 using namespace std;
 
 // Freeglut parameters
@@ -23,22 +20,11 @@ int WIDTH= 500, HEIGHT= 500;
 // Viewing frustum parameters
 GLdouble xRight=10, xLeft=-xRight, yTop=10, yBot=-yTop, N=1, F=1000;
 
-<<<<<<< HEAD
-=======
-// Camera parameters
-GLdouble eyeX=100.0, eyeY=100.0, eyeZ=100.0;
-GLdouble lookX=0.0, lookY=0.0, lookZ=0.0;
-GLdouble upX=0, upY=1, upZ=0;
-
->>>>>>> a18ee07f7ba1c514938b790abbb3a9e7104b69f7
 // Scene variables
 GLfloat angX, angY, angZ; 
 GLUquadricObj* q;
 Arbol* arbol;
-<<<<<<< HEAD
 Camara* cam;
-=======
->>>>>>> a18ee07f7ba1c514938b790abbb3a9e7104b69f7
 
 void buildSceneObjects() {	 
     angX=0.0f;
@@ -46,10 +32,7 @@ void buildSceneObjects() {
     angZ=0.0f;
 	q = gluNewQuadric();
 	arbol = new Arbol();
-<<<<<<< HEAD
 	cam = new Camara();
-=======
->>>>>>> a18ee07f7ba1c514938b790abbb3a9e7104b69f7
 }
 
 void initGL() {	 		 
@@ -75,19 +58,6 @@ void initGL() {
 	GLfloat p[]={25.0f, 25.0f, 25.0f, 1.0f};	 
 	glLightfv(GL_LIGHT0, GL_POSITION, p);
 
-<<<<<<< HEAD
-=======
-	// Camera set up
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	gluLookAt(eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ);
-
-	// Frustum set up
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();     
-	glOrtho(xLeft, xRight, yBot, yTop, N, F);
-
->>>>>>> a18ee07f7ba1c514938b790abbb3a9e7104b69f7
 	// Viewport set up
     glViewport(0, 0, WIDTH, HEIGHT);  	
  }
@@ -118,13 +88,9 @@ void display(void) {
 			glVertex3f(0, 0, 0);
 			glVertex3f(0, 0, 20);	     
 		glEnd();
-<<<<<<< HEAD
 		 
 		// Drawing the scene
-=======
 		 		
-		// Drawing the scene	
->>>>>>> a18ee07f7ba1c514938b790abbb3a9e7104b69f7
 		glPushMatrix();
 		glTranslated(8.0f, 0.0f, 8.0f);
 		arbol->abeto(q, 0.35f, 1.2f, 3.0f, 4.0f);
@@ -144,10 +110,6 @@ void display(void) {
 		glTranslated(-2.0f, 0.0f, -1.2f);
 		arbol->alamo(q, 0.35f, 4.0f, 2.0f, 1.8f);
 		glPopMatrix();
-<<<<<<< HEAD
-=======
-		
->>>>>>> a18ee07f7ba1c514938b790abbb3a9e7104b69f7
 
 	glPopMatrix();
 
@@ -178,13 +140,10 @@ void resize(int newWidth, int newHeight) {
 		xRight= xMiddle + newWidth/2.0;
 		xLeft=  xMiddle - newWidth/2.0;
 	}
-<<<<<<< HEAD
-=======
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();   
 	glOrtho(xLeft, xRight, yBot, yTop, N, F);
->>>>>>> a18ee07f7ba1c514938b790abbb3a9e7104b69f7
 }
 
 void key(unsigned char key, int x, int y){
@@ -201,10 +160,16 @@ void key(unsigned char key, int x, int y){
 		case 'x': angY=angY-5; break;
 		case 'd': angZ=angZ+5; break;
 		case 'c': angZ=angZ-5; break;  
-<<<<<<< HEAD
 		case '1': cam->giraX(); break;
-=======
->>>>>>> a18ee07f7ba1c514938b790abbb3a9e7104b69f7
+		case '2': cam->giraY(); break;
+		case '3': cam->giraZ(); break;
+		case '4': cam->frontal(); break;
+		case '5': cam->cenital(); break;
+		case '6': cam->lateral(); break;
+		case '7': cam->rincon(); break;
+		case '8': cam->roll(40); break;
+		case '9': cam->pitch(40); break;
+		case '0': cam->yaw(40); break;
 		default:
 			need_redisplay = false;
 			break;
