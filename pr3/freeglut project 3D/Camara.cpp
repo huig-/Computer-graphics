@@ -2,10 +2,10 @@
 #include "Camara.h"
 
 Camara::Camara() {           
-	eye=new PuntoVector3D(30, 30,30 , 1);
 	eye=new PuntoVector3D(30, 30, 30, 1);
     look=new PuntoVector3D(0, 0, 0, 1);
     up=new PuntoVector3D(0, 1, 0, 0);
+	angleX = 0; angleY = 0; angleZ = 0;
        
     left=-10; right=-left; bottom=-10; top=-bottom; 
 	Near=1; Far=1000;
@@ -59,8 +59,9 @@ void Camara::giraX() {
 	GLfloat radius = aux->modulo();
 	//Calcular el angulo actual 
 	PuntoVector3D eje(eye->getX(), 0, 1, 0);
-	GLfloat angle = atan2(aux->productoVectorial((aux->productoVectorial(eje))->normalizar(), aux->productoEscalar(eje));
-	eye = new PuntoVector3D(eye->getX(), radius * sin(0.05+angle), radius*cos(angle+0.05), 1);
+	//GLfloat angle = atan2(aux->productoVectorial((aux->productoVectorial(eje)), aux->productoEscalar(eje));
+	eye = new PuntoVector3D(eye->getX(), radius * sin(0.05+angleX), radius*cos(angleX+0.05), 1);
+	angleX += 0.05;
 	setView();
 	setCameraCoordinateSystem(); 
 }
@@ -72,8 +73,9 @@ void Camara::giraY() {
 	GLfloat radius = aux->modulo();
 	//Calcular el angulo actual
 	PuntoVector3D eje(0, eye->getY(), 1, 0);
-	GLfloat angle = atan2(aux->productoVectorial((aux->productoVectorial(eje))->normalizar(), aux->productoEscalar(eje));
-	eye = new PuntoVector3D(radius * sin(angle+0.05), eye->getY(), radius*cos(angle+0.05), 1);
+//	GLfloat angle = atan2(aux->productoVectorial((aux->productoVectorial(eje))->normalizar(), aux->productoEscalar(eje));
+	eye = new PuntoVector3D(radius * sin(angleY+0.05), eye->getY(), radius*cos(angleY+0.05), 1);
+	angleY += 0.05;
 	setView();
 	setCameraCoordinateSystem(); 
 
@@ -86,8 +88,9 @@ void Camara::giraZ() {
 	GLfloat radius = aux->modulo();
 	//Calcular el angulo actual
 	PuntoVector3D eje(0, 0, eye->getZ(), 0);
-	GLfloat angle = atan2(aux->productoVectorial((aux->productoVectorial(eje))->normalizar(), aux->productoEscalar(eje));
-	eye = new PuntoVector3D(radius * sin(angle+0.05), radius*cos(angle+0.05), eye->getZ(), 1);
+//	GLfloat angle = atan2(aux->productoVectorial((aux->productoVectorial(eje))->normalizar(), aux->productoEscalar(eje));
+	eye = new PuntoVector3D(radius * sin(angleZ+0.05), radius*cos(angleZ+0.05), eye->getZ(), 1);
+	angleZ += 0.05;
 	setView();
 	setCameraCoordinateSystem(); 
 
@@ -96,7 +99,7 @@ void Camara::giraZ() {
 void Camara::lateral() {
 	//Coloca la cámara de forma que se muestra una visión lateral 
 	//de la escena (desde el eje X) 
-	eye = new PuntoVector3D(eye->getX(), eye->getY(), 1);
+	eye = new PuntoVector3D(30, 0, 0, 1);
 	up = new PuntoVector3D(0, 1, 0, 0);
 	setView();
 	setCameraCoordinateSystem();
@@ -105,7 +108,7 @@ void Camara::lateral() {
 void Camara::frontal() {
 	//Coloca la cámara de forma que se muestra una visión frontal 
 	//de la escena (desde el eje Z)  
-	eye = new PuntoVector3D(0, eye->getY(), eye->getZ(), 1);
+	eye = new PuntoVector3D(0, 0, 30, 1);
 	up = new PuntoVector3D(0, 1, 0, 0);
 	setView();
 	setCameraCoordinateSystem();
@@ -114,7 +117,7 @@ void Camara::frontal() {
 void Camara::cenital() {
     //Coloca la cámara de forma que se muestra una visión cenital 
     //de la escena (desde el eje Y) 
-    eye = new PuntoVector3D(0, eye->getY(), 0, 1);
+    eye = new PuntoVector3D(0, 30, 0, 1);
     up = new PuntoVector3D(0, 0, 1, 0);
     setView();
     setCameraCoordinateSystem();
@@ -131,25 +134,25 @@ void Camara::rincon() {
  
 void Camara::roll(float ang) {
     //Rota la cámara tal como se explica en las transparencias
-    PuntoVector3D *u' = u->clonar()->escalar(cos(ang))->sumar(v->clonar()->escalar(sin(ang)));
-    PuntoVector3D *v' = u->clonar()->escalar(-sin(ang))->sumar(v->clonar()->escalar(cos(ang)));
-    u = u'; 
-    v = v';
+	//PuntoVector3D *u_aux = (u->clonar()); u_aux->escalar(cos(ang))->sumar(v->clonar()->escalar(sin(ang)));
+    //PuntoVector3D *v_aux = (u->clonar())->escalar(-sin(ang))->sumar(v->clonar()->escalar(cos(ang)));
+    //u = u_aux; 
+    //v = v_aux;
     setModelViewMatrix();
 }
 
 void Camara::pitch(float ang) {		
-    PuntoVector3D *v' = v->clonar()->escalar(cos(ang))->sumar(n->clonar()->escalar(sin(ang)));
-    PuntoVector3D *n' = v->clonar()->escalar(-sin(ang))->sumar(n->clonar()->escalar(cos(ang)));
-    v = v';
-    n = n';
+    //PuntoVector3D *v' = v->clonar()->escalar(cos(ang))->sumar(n->clonar()->escalar(sin(ang)));
+    //PuntoVector3D *n' = v->clonar()->escalar(-sin(ang))->sumar(n->clonar()->escalar(cos(ang)));
+    //v = v';
+    //n = n';
     setModelViewMatrix();
 }
 
 void Camara::yaw(float ang) {		
-    PuntoVector3D *u' = u->clonar()->escalar(cos(ang))->restar(n->clonar()->escalar(sin(ang)));
-    PuntoVector3D *n' = u->clonar()->escalar(sin(ang))->sumar(n->clonar()->escalar(cos(ang)));
-    u = u';
-    n = n';
+    //PuntoVector3D *u' = u->clonar()->escalar(cos(ang))->restar(n->clonar()->escalar(sin(ang)));
+    //PuntoVector3D *n' = u->clonar()->escalar(sin(ang))->sumar(n->clonar()->escalar(cos(ang)));
+    //u = u';
+    //n = n';
     setModelViewMatrix();
 }

@@ -9,7 +9,7 @@ class Camara {
 		PuntoVector3D *eye, *up, *look, *u, *v, *n;				
         GLfloat left, right, bottom, top, Near, Far;                
         GLdouble fovy, aspect; 		 
-
+		GLfloat angleX, angleY, angleZ;
 		void setView();	
 		void setCameraCoordinateSystem();
         void setModelViewMatrix();
@@ -27,6 +27,8 @@ class Camara {
 		void setProjection(); 
 		void roll(float ang);
         void pitch(float ang);
-        void yaw(float ang);                
+        void yaw(float ang);      
+		void setAngle(GLfloat angle);
+		GLfloat getAngle();
 };
 #endif
