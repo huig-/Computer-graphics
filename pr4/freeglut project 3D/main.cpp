@@ -10,6 +10,10 @@
 #include "Camara.h"
 using namespace std;
 
+void embaldosar();
+void drawScene(GLint c);
+void desembaldosar();
+
 // Freeglut parameters
 // Flag telling us to keep processing events
 // bool continue_in_main_loop= true; //(**)
@@ -72,26 +76,11 @@ void display(void) {
 	glPushMatrix();
 	
 		// Rotating the scene
+	
 		glRotatef(angX, 1.0f, 0.0f, 0.0f);
         glRotatef(angY, 0.0f, 1.0f, 0.0f);
         glRotatef(angZ, 0.0f, 0.0f, 1.0f);
 		
-		glLineWidth(1.5f);
-		// Drawing axes
-		glBegin( GL_LINES );			
-			glColor3f(1.0,0.0,0.0); 
-			glVertex3f(0, 0, 0);
-			glVertex3f(20, 0, 0);	     
-	 
-			glColor3f(0.0,1.0,0.0); 
-			glVertex3f(0, 0, 0);
-			glVertex3f(0, 20, 0);	 
-	 
-			glColor3f(0.0,0.0,1.0); 
-			glVertex3f(0, 0, 0);
-			glVertex3f(0, 0, 20);	     
-		glEnd();
-		 
 		// Drawing the scene
 		if (baldosas) embaldosar();
 		else desembaldosar();
@@ -147,8 +136,8 @@ void key(unsigned char key, int x, int y){
 		case 'c': angZ=angZ-5; break;  
 		case '8': baldosas = true; break;
 		case '9': baldosas = false; break;
-		case 'i': cam->zoom(0.5); break;
-		case 'k': cam->zoom(1.5); break;
+		case 'i': cam->zoom(0.9); break;
+		case 'k': cam->zoom(1.1); break;
 		default:
 			need_redisplay = false;
 			break;
@@ -198,51 +187,68 @@ int main(int argc, char *argv[]){
 }
 
 void embaldosar() {
-    int nCol = 4;
-    GLdouble SVAratio = (cam->getRight() - cam->getLeft()) / (cam->getTop() - cam->getBottom());
-    GLdouble w = (GLdouble) WIDTH / (GLdouble) nCol; 
-    GLdouble h = w / SVAratio;
-
-    for (GLint c = 0; c < nCol; c++) {
-	GLdouble currentH = 0;
-	while ((currentH + h) <= HEIGHT) {
-	    glViewport((GLint)(c*w), (GLint)currentH, (GLint)w, (GLint)h);
-	    //Draw scene
-	    drawScene(c);
-	    //End draw scene
-	    currentH += h;
+	int nCol = 2;
+	GLdouble SVAratio = (cam->getRight() - cam->getLeft()) / (cam->getTop() - cam->getBottom());
+	GLdouble w = (GLdouble)WIDTH / (GLdouble)nCol;
+	GLdouble h = w / SVAratio;
+	int i = 0;
+	for (GLint c = 0; c < nCol; c++) {
+		GLdouble currentH = 0;
+		while ((currentH + h) <= HEIGHT) {
+			glViewport((GLint)(c*w), (GLint)(currentH), (GLint)w, (GLint)h);
+			//Draw scene
+			drawScene(i);
+			i++;
+			//End draw scene
+			currentH += h;
+		}
 	}
-    }
 }
 
 void desembaldosar() {
-    glViewport(0, 0, WIDTH, HEIGHT);
-    drawScene(5);
+	glViewport(0, 0, WIDTH, HEIGHT);
+	drawScene(5);
 }
 
 void drawScene(GLint c) {
-    glPushMatrix();
-    glTranslated(8.0f, 0.0f, 8.0f);
-    arbol->abeto(q, 0.35f, 1.2f, 3.0f, 4.0f);
-    glPopMatrix();
 
-    glPushMatrix();
-    glTranslated(8.0f, 0.0f, -3.0f);
-    arbol->pino(q, 0.35f, 1.2f, 4.5f, 4.0f);
-    glPopMatrix();
+	if (c == 1) { cam->frontal(); }
+	else if (c == 0) { cam->lateral(); }
+	else if (c == 2) { cam->cenital(); }
+	else if (c == 3) { cam->rincon(); }
 
-    glPushMatrix();
-    glTranslated(-5.8f,0.0f,4.2f);
-    arbol->roble(q,0.35f,4.0f,1.5f);
-    glPopMatrix();
+	glLineWidth(1.5f);
+	// Drawing axes
+	glBegin(GL_LINES);
+	glColor3f(1.0, 0.0, 0.0);
+	glVertex3f(0, 0, 0);
+	glVertex3f(20, 0, 0);
 
-    glPushMatrix();
-    glTranslated(-2.0f, 0.0f, -1.2f);
-    arbol->alamo(q, 0.35f, 4.0f, 2.0f, 1.8f);
-    glPopMatrix();
+	glColor3f(0.0, 1.0, 0.0);
+	glVertex3f(0, 0, 0);
+	glVertex3f(0, 20, 0);
 
-    if (c == 0) { cam->frontal();}
-    else if (c == 1) { cam->lateral();}
-    else if (c == 2) { cam->rincon();}
-    else if (c == 3) { cam->cenital();}
+	glColor3f(0.0, 0.0, 1.0);
+	glVertex3f(0, 0, 0);
+	glVertex3f(0, 0, 20);
+	glEnd();
+	glPushMatrix();
+	glTranslated(8.0f, 0.0f, 8.0f);
+	arbol->abeto(q, 0.35f, 1.2f, 3.0f, 4.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(8.0f, 0.0f, -3.0f);
+	arbol->pino(q, 0.35f, 1.2f, 4.5f, 4.0f);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-5.8f, 0.0f, 4.2f);
+	arbol->roble(q, 0.35f, 4.0f, 1.5f);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2.0f, 0.0f, -1.2f);
+	arbol->alamo(q, 0.35f, 4.0f, 2.0f, 1.8f);
+	glPopMatrix();
 }

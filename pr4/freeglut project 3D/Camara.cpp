@@ -118,7 +118,7 @@ void Camara::cenital() {
     //Coloca la cámara de forma que se muestra una visión cenital 
     //de la escena (desde el eje Y) 
     eye = new PuntoVector3D(0, 30, 0, 1);
-    up = new PuntoVector3D(0, 0, 1, 0);
+    up = new PuntoVector3D(1, 0, 0, 0);
     setView();
     setCameraCoordinateSystem();
 }
@@ -165,7 +165,7 @@ void Camara::zoom(GLdouble factor) {
     GLdouble newWidth = width/factor, newHeight = height/factor, newDepth = depth/factor;
     left = look->getX() - newWidth/2.0;
     right = look->getX() + newWidth/2.0;
-    bottom = look->getY() - newHeigth/2.0;
+    bottom = look->getY() - newHeight/2.0;
     top = look->getY() + newHeight/2.0;
     Near = look->getZ() - newDepth/2.0;
     Far = look->getZ() + newDepth/2.0;

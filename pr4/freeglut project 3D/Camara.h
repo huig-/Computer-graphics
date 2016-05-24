@@ -28,6 +28,7 @@ class Camara {
 	void roll(float ang);
         void pitch(float ang);
         void yaw(float ang);      
+		void zoom(GLdouble factor);
 	void setAngle(GLfloat angle);
 	GLfloat getAngle();
 	GLfloat getLeft();
