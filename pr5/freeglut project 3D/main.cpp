@@ -6,8 +6,12 @@
 //#include <GL/glut.h>
 
 #include <iostream>
-#include "Arbol.h"
 #include "OjetoCompuesto.h"
+#include "Coche.h"
+#include "Pino.h"
+#include "Abeto.h"
+#include "Alamo.h"
+#include "Roble.h"
 using namespace std;
 
 // Freeglut parameters
@@ -27,15 +31,27 @@ GLdouble upX=0, upY=1, upZ=0;
 
 // Scene variables
 GLfloat angX, angY, angZ; 
-GLUquadricObj* q;
-Arbol* arbol;
+Coche* coche;
+Pino* pino;
+Abeto* abeto;
+Roble* roble;
+Alamo* alamo;
 
 void buildSceneObjects() {	 
     angX=0.0f;
     angY=0.0f;
     angZ=0.0f;
-	q = gluNewQuadric();
-	arbol = new Arbol();
+    coche = new Coche(0.7f, 0.5f, 1.3f, 0.4f, 2.5f);
+    pino = new Pino(1.2f, 4.0f, 0.35f, 4.5f)
+    abeto = new Abeto(1.2f, 4.0f, 0.35f, 3.0f);
+    roble = new Roble(1.5f, 0.35f, 4.0f);
+    alamo = new Alamo(2.0f, 1.8f, 0.35f, 4.0f);
+
+    coche->traslada(0.0f, 2.5f, 0.0f);
+    pino->traslada(8.0f, 0.0f, -3.0f);
+    abeto->traslada(8.0f, 0.0f, 8.0f);
+    roble->traslada(-5.8f,0.0f,4.2f);
+    alamo->traslada(-2.0f, 0.0f, -1.2f);
 }
 
 void initGL() {	 		 
@@ -103,35 +119,11 @@ void display(void) {
 		glEnd();
 		 		
 		// Drawing the scene	
-
-		glPushMatrix();
-		glTranslated(8.0f, 0.0f, 8.0f);
-		arbol->abeto(q, 0.35f, 1.2f, 3.0f, 4.0f);
-		glPopMatrix();
-
-		glPushMatrix();
-		glTranslated(8.0f, 0.0f, -3.0f);
-		arbol->pino(q, 0.35f, 1.2f, 4.5f, 4.0f);
-		glPopMatrix();
-
-		glPushMatrix();
-		glTranslated(-5.8f,0.0f,4.2f);
-		arbol->roble(q,0.35f,4.0f,1.5f);
-		glPopMatrix();
-
-		glPushMatrix();
-		glTranslated(-2.0f, 0.0f, -1.2f);
-		//glScaled(2.0f, 2.0f, 2.0f);
-		arbol->alamo(q, 0.35f, 4.0f, 2.0f, 1.8f);
-		glPopMatrix();
-
-		glPushMatrix();
-		glTranslated(-2.0f, 0.0f, -1.2f);
-		glRotated(180, 1.0f, 0.0f, 0.0f);
-		//glScaled(2.0f, 2.0f, 2.0f);
-		arbol->alamo(q, 0.35f, 4.0f, 2.0f, 1.8f);
-		glPopMatrix();
-		
+		alamo->dibuja();
+		roble->dibuja();
+		pino->dibuja();
+		abeto->dibuja();
+		coche->dibuja();
 
 	glPopMatrix();
 

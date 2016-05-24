@@ -6,6 +6,6 @@
 #include "Tronco.h"
 
 class Roble: public ObjetoCompuesto {
-    public Roble(int capacidad, GLdouble radioCopa, GLdouble baseTronco, GLdouble hTronco);
+    public Roble(GLdouble radioCopa, GLdouble baseTronco, GLdouble hTronco);
 };
 #endif

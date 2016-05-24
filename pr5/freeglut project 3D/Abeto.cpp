@@ -1,7 +1,7 @@
  
 #include "Abeto.h"
 
-Abeto:: Abeto(int capacidad, GLdouble baseCopa, GLdouble hCopa, GLdouble baseTronco, GLdouble hTronco) : ObjectoCompuesto(capacidad)
+Abeto:: Abeto(GLdouble baseCopa, GLdouble hCopa, GLdouble baseTronco, GLdouble hTronco) : ObjectoCompuesto()
 {
     GLUquadricObj* q = new gluNewQuadric();
     this->introduceObjeto(new Tronco(baseTronco, hTronco));

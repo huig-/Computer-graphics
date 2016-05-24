@@ -1,7 +1,7 @@
  
 #include "Roble.h"
 
-Roble:: Roble(int capacidad, GLdouble radioCopa, GLdouble baseTronco, GLdouble hTronco) : ObjectoCompuesto(capacidad)
+Roble:: Roble(GLdouble radioCopa, GLdouble baseTronco, GLdouble hTronco) : ObjectoCompuesto()
 {
     GLUquadricObj* q = new gluNewQuadric();
     this->introduceObjeto(new Tronco(baseTronco, hTronco));

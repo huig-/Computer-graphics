@@ -10,7 +10,7 @@ class ObjetoCompuesto: public Objeto3D {
 		int numHijos;
 		int capacidad;
 	public:
-		ObjetoCompuesto(int capacidad);
+		ObjetoCompuesto(int capacidad = 100);
 		~ObjetoCompuesto();
 		void dibuja();
 		void introduceObjeto(Objeto3D* objeto);

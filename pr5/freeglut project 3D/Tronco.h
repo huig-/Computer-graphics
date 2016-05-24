@@ -5,6 +5,6 @@
 #include "Objeto3D.h"
 
 class Tronco: public ObjetoCompuesto {
-    public Tronco(int capacidad, GLdouble baseTronco, GLdouble hTronco);
+    public Tronco(GLdouble baseTronco, GLdouble hTronco);
 };
 #endif

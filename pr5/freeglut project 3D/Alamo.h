@@ -7,6 +7,6 @@
 #include "Tronco.h"
 
 class Alamo: public ObjetoCompuesto {
-    public Pino(int capacidad, GLdouble radioCopa1, GLdouble radioCopa2, GLdouble baseTronco, GLdouble hTronco);
+    public Pino(GLdouble radioCopa1, GLdouble radioCopa2, GLdouble baseTronco, GLdouble hTronco);
 };
 #endif

@@ -5,6 +5,6 @@
 #include "Objeto3D.h"
 
 class CopaDobleEsferica: public ObjetoCompuesto {
-    public CopaDobleEsferica(int capacidad, GLdouble radioCopa1, GLdouble radioCopa2);
+    public CopaDobleEsferica(GLdouble radioCopa1, GLdouble radioCopa2);
 };
 #endif

@@ -7,6 +7,6 @@
 #include "Tronco.h"
 
 class Abeto: public ObjetoCompuesto {
-    public Abeto(int capacidad, GLdouble baseCopa, GLdouble hCopa, GLdouble baseTronco, GLdouble hTronco);
+    public Abeto(GLdouble baseCopa, GLdouble hCopa, GLdouble baseTronco, GLdouble hTronco);
 };
 #endif
