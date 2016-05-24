@@ -134,25 +134,59 @@ void Camara::rincon() {
  
 void Camara::roll(float ang) {
     //Rota la cámara tal como se explica en las transparencias
-	//PuntoVector3D *u_aux = (u->clonar()); u_aux->escalar(cos(ang))->sumar(v->clonar()->escalar(sin(ang)));
-    //PuntoVector3D *v_aux = (u->clonar())->escalar(-sin(ang))->sumar(v->clonar()->escalar(cos(ang)));
-    //u = u_aux; 
-    //v = v_aux;
+	PuntoVector3D* u_aux = (u->clonar()); 
+	PuntoVector3D* v_aux = (v->clonar());
+	u_aux->escalar(cos(ang));
+	v_aux->escalar(sin(ang));
+	u_aux->sumar(v_aux);
+   
+	PuntoVector3D* u_aux2 = (u->clonar());
+	PuntoVector3D* v_aux2 = (v->clonar());
+	u_aux2->escalar(-sin(ang));
+	v_aux2->escalar(cos(ang));
+	u_aux2->sumar(v_aux2);
+	u = u_aux;
+	v = u_aux2;
     setModelViewMatrix();
 }
 
 void Camara::pitch(float ang) {		
     //PuntoVector3D *v' = v->clonar()->escalar(cos(ang))->sumar(n->clonar()->escalar(sin(ang)));
+	PuntoVector3D* v_aux = (v->clonar());
+	PuntoVector3D* n_aux = (n->clonar());
+	v_aux->escalar(cos(ang));
+	n_aux->escalar(sin(ang));
+	v_aux->sumar(n_aux);
+
     //PuntoVector3D *n' = v->clonar()->escalar(-sin(ang))->sumar(n->clonar()->escalar(cos(ang)));
+	PuntoVector3D* v_aux2 = (v->clonar());
+	PuntoVector3D* n_aux2 = (n->clonar());
+	v_aux2->escalar(-sin(ang));
+	n_aux2->escalar(cos(ang));
+	v_aux2->sumar(n_aux2);
     //v = v';
     //n = n';
+	v = v_aux;
+	n = v_aux2;
     setModelViewMatrix();
 }
 
 void Camara::yaw(float ang) {		
     //PuntoVector3D *u' = u->clonar()->escalar(cos(ang))->restar(n->clonar()->escalar(sin(ang)));
+	PuntoVector3D* u_aux = (u->clonar());
+	PuntoVector3D* n_aux = (n->clonar());
+	u_aux->escalar(cos(ang));
+	n_aux->escalar(sin(ang));
+	u_aux->sumar(n_aux);
     //PuntoVector3D *n' = u->clonar()->escalar(sin(ang))->sumar(n->clonar()->escalar(cos(ang)));
+	PuntoVector3D* u_aux2 = (u->clonar());
+	PuntoVector3D* n_aux2 = (n->clonar());
+	u_aux2->escalar(-sin(ang));
+	n_aux2->escalar(cos(ang));
+	u_aux2->sumar(n_aux2);
     //u = u';
     //n = n';
+	u = u_aux;
+	n = u_aux2;
     setModelViewMatrix();
 }

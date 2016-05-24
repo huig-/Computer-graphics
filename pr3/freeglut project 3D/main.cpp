@@ -167,9 +167,9 @@ void key(unsigned char key, int x, int y){
 		case '5': cam->cenital(); break;
 		case '6': cam->lateral(); break;
 		case '7': cam->rincon(); break;
-		case '8': cam->roll(40); break;
-		case '9': cam->pitch(40); break;
-		case '0': cam->yaw(40); break;
+		case '8': cam->roll(0.2); break;
+		case '9': cam->pitch(0.2); break;
+		case '0': cam->yaw(0.2); break;
 		default:
 			need_redisplay = false;
 			break;
