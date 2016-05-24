@@ -21,9 +21,87 @@
     <ClCompile Include="Arbol.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Abeto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Alamo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Coche.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Copa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CopaDobleEsferica.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Faro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Objeto3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjetoCompuesto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pino.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Roble.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rueda.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAfin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tronco.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arbol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Abeto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Alamo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Coche.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Copa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CopaDobleEsferica.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Faro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objeto3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjetoCompuesto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Roble.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rueda.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TAfin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tronco.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

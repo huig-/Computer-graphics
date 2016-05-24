@@ -66,11 +66,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Abeto.cpp" />
+    <ClCompile Include="Alamo.cpp" />
     <ClCompile Include="Arbol.cpp" />
+    <ClCompile Include="Coche.cpp" />
+    <ClCompile Include="Copa.cpp" />
+    <ClCompile Include="CopaDobleEsferica.cpp" />
+    <ClCompile Include="Faro.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Objeto3D.cpp" />
+    <ClCompile Include="ObjetoCompuesto.cpp" />
+    <ClCompile Include="Pino.cpp" />
+    <ClCompile Include="Roble.cpp" />
+    <ClCompile Include="Rueda.cpp" />
+    <ClCompile Include="TAfin.cpp" />
+    <ClCompile Include="Tronco.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Abeto.h" />
+    <ClInclude Include="Alamo.h" />
     <ClInclude Include="Arbol.h" />
+    <ClInclude Include="Coche.h" />
+    <ClInclude Include="Copa.h" />
+    <ClInclude Include="CopaDobleEsferica.h" />
+    <ClInclude Include="Faro.h" />
+    <ClInclude Include="Objeto3D.h" />
+    <ClInclude Include="ObjetoCompuesto.h" />
+    <ClInclude Include="Pino.h" />
+    <ClInclude Include="Roble.h" />
+    <ClInclude Include="Rueda.h" />
+    <ClInclude Include="TAfin.h" />
+    <ClInclude Include="Tronco.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

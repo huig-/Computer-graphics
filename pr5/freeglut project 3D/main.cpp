@@ -6,7 +6,7 @@
 //#include <GL/glut.h>
 
 #include <iostream>
-#include "OjetoCompuesto.h"
+#include "ObjetoCompuesto.h"
 #include "Coche.h"
 #include "Pino.h"
 #include "Abeto.h"
@@ -42,7 +42,7 @@ void buildSceneObjects() {
     angY=0.0f;
     angZ=0.0f;
     coche = new Coche(0.7f, 0.5f, 1.3f, 0.4f, 2.5f);
-    pino = new Pino(1.2f, 4.0f, 0.35f, 4.5f)
+	pino = new Pino(1.2f, 4.0f, 0.35f, 4.5f);
     abeto = new Abeto(1.2f, 4.0f, 0.35f, 3.0f);
     roble = new Roble(1.5f, 0.35f, 4.0f);
     alamo = new Alamo(2.0f, 1.8f, 0.35f, 4.0f);

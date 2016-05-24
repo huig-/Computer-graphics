@@ -16,7 +16,7 @@ ObjetoCompuesto:: ~ObjetoCompuesto() {
 void ObjetoCompuesto:: dibuja() {
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix(); 
-	glMultMatrix(this->dameMatrizAfin());
+	glMultMatrixf(this->dameMatrizAfin());
 	for (int i = 0; i < numHijos; i++) {
 	    glColor3f(hijos[i]->getRed(), hijos[i]->getGreen(), hijos[i]->getBlue());
 	    hijos[i]->dibuja();
