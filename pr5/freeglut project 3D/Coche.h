@@ -8,6 +8,9 @@
 #include "Cubo.h"
 
 class Coche: public ObjetoCompuesto {
-public: Coche(GLdouble rRueda, GLdouble rFaro, GLdouble aRueda, GLdouble aFaro, GLdouble lChasis);
+public: 
+	Coche(GLdouble rRueda, GLdouble rFaro, GLdouble aRueda, GLdouble aFaro, GLdouble lChasis);
+	void avanza(GLfloat inc);
+	void gira(GLfloat inc);
 };
 #endif

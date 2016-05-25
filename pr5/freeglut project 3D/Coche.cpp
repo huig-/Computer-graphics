@@ -20,3 +20,18 @@ Coche:: Coche(GLdouble rRueda, GLdouble rFaro, GLdouble aRueda, GLdouble aFaro, 
     hijos[5]->traslada(lChasis, 0.3 * lChasis, -0.4 * lChasis); //faro1
     hijos[6]->traslada(lChasis, 0.3 * lChasis, 0.4 * lChasis); //faro2 
 }
+
+void Coche::avanza(GLfloat inc)
+{
+	if (inc > 0)
+		this->traslada(1.0f, 0.0f, 0.0f);
+	else
+		this->traslada(-1.0f, 0.0f, 0.0f);
+}
+
+void Coche::gira(GLfloat inc) {
+	if (inc > 0)
+		this->rota(10,0.0f, 1.0f, 0.0f);
+	else
+		this->rota(-10, 0.0f, 1.0f, 0.0f);
+}
