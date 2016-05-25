@@ -1,9 +1,8 @@
  
 #include "Pino.h"
 
-Pino:: Pino(int capacidad, GLdouble baseCopa, GLdouble hCopa, GLdouble baseTronco, GLdouble hTronco) : ObjectoCompuesto()
+Pino:: Pino(GLdouble baseCopa, GLdouble hCopa, GLdouble baseTronco, GLdouble hTronco) 
 {
-    GLUquadricObj* q = new gluNewQuadric();
     this->introduceObjeto(new Tronco(baseTronco, hTronco));
     this->introduceObjeto(new Copa(baseCopa, hCopa));
     this->introduceObjeto(new Copa(baseCopa, hCopa));

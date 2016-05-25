@@ -38,3 +38,15 @@ GLfloat Objeto3D :: getGreen() {
 GLfloat Objeto3D :: getBlue() {
     return blue;
 }
+
+void Objeto3D::setRed(GLfloat red) {
+	this->red = red;
+}
+
+void Objeto3D::setGreen(GLfloat green) {
+	this->green = green;
+}
+
+void Objeto3D::setBlue(GLfloat blue) {
+	this->blue = blue;
+}

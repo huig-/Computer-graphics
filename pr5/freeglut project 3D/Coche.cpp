@@ -1,10 +1,11 @@
  
 #include "Coche.h"
 
-Coche:: Coche(int capacidad, GLdouble rRueda, GLdouble rFaro, GLdouble aRueda, GLdouble aFaro, GLdouble lChasis) : ObjetoCompuesto()
+Coche:: Coche(GLdouble rRueda, GLdouble rFaro, GLdouble aRueda, GLdouble aFaro, GLdouble lChasis)
 {
-    GLUquadricObj* q = new gluNewQuadric();
-    this->introduceObjeto(new glutSolidCube(lChasis));
+    GLUquadricObj* q = gluNewQuadric();
+	glutSolidCube(1);
+    this->introduceObjeto(new Cubo(lChasis));
     for (int i = 0; i < 4; i++)
         this->introduceObjeto(new Rueda(aRueda, rRueda));
     for (int i = 0; i < 2; i++)

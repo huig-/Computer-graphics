@@ -7,6 +7,6 @@
 #include "Tronco.h"
 
 class Pino: public ObjetoCompuesto {
-    public Pino(GLdouble baseCopa, GLdouble hCopa, GLdouble baseTronco, GLdouble hTronco);
+public: Pino(GLdouble baseCopa, GLdouble hCopa, GLdouble baseTronco, GLdouble hTronco);
 };
 #endif
