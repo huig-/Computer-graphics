@@ -7,6 +7,10 @@ Tronco:: Tronco(GLdouble baseTronco, GLdouble hTronco)
     this->introduceObjeto(new Disco(baseTronco));
     hijos[0]->rota(-90, 1, 0, 0);
     hijos[1]->rota(-90, 1, 0, 0);   
-    this->setRed(0.7f); this->setGreen(0.35f); this->setBlue(0.05f);
+	for (int i = 0; i < 2; i++) {
+		hijos[i]->setRed(0.7f); 
+		hijos[i]->setGreen(0.35f);
+		hijos[i]->setBlue(0.05f);
+	}
 }
 

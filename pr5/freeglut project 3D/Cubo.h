@@ -6,5 +6,8 @@ class Cubo : public ObjetoCompuesto
 {
 public:
 	Cubo(GLdouble lado);
+	void dibuja();
+private:
+	GLdouble lado;
 };
 #endif

@@ -71,6 +71,7 @@
     <ClCompile Include="Cilindro.cpp" />
     <ClCompile Include="Coche.cpp" />
     <ClCompile Include="Copa.cpp" />
+    <ClCompile Include="CopaDoble.cpp" />
     <ClCompile Include="CopaDobleEsferica.cpp" />
     <ClCompile Include="Cubo.cpp" />
     <ClCompile Include="Disco.cpp" />
@@ -93,6 +94,7 @@
     <ClInclude Include="Cilindro.h" />
     <ClInclude Include="Coche.h" />
     <ClInclude Include="Copa.h" />
+    <ClInclude Include="CopaDoble.h" />
     <ClInclude Include="CopaDobleEsferica.h" />
     <ClInclude Include="Cubo.h" />
     <ClInclude Include="Disco.h" />

@@ -75,6 +75,9 @@
     <ClCompile Include="PuntoVector3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CopaDoble.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Abeto.h">
@@ -132,6 +135,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PuntoVector3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CopaDoble.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
