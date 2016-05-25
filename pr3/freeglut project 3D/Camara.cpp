@@ -151,21 +151,18 @@ void Camara::roll(float ang) {
 }
 
 void Camara::pitch(float ang) {		
-    //PuntoVector3D *v' = v->clonar()->escalar(cos(ang))->sumar(n->clonar()->escalar(sin(ang)));
 	PuntoVector3D* v_aux = (v->clonar());
 	PuntoVector3D* n_aux = (n->clonar());
 	v_aux->escalar(cos(ang));
 	n_aux->escalar(sin(ang));
 	v_aux->sumar(n_aux);
 
-    //PuntoVector3D *n' = v->clonar()->escalar(-sin(ang))->sumar(n->clonar()->escalar(cos(ang)));
 	PuntoVector3D* v_aux2 = (v->clonar());
 	PuntoVector3D* n_aux2 = (n->clonar());
 	v_aux2->escalar(-sin(ang));
 	n_aux2->escalar(cos(ang));
+
 	v_aux2->sumar(n_aux2);
-    //v = v';
-    //n = n';
 	v = v_aux;
 	n = v_aux2;
     setModelViewMatrix();
@@ -176,12 +173,12 @@ void Camara::yaw(float ang) {
 	PuntoVector3D* u_aux = (u->clonar());
 	PuntoVector3D* n_aux = (n->clonar());
 	u_aux->escalar(cos(ang));
-	n_aux->escalar(sin(ang));
+	n_aux->escalar(-sin(ang));
 	u_aux->sumar(n_aux);
     //PuntoVector3D *n' = u->clonar()->escalar(sin(ang))->sumar(n->clonar()->escalar(cos(ang)));
 	PuntoVector3D* u_aux2 = (u->clonar());
 	PuntoVector3D* n_aux2 = (n->clonar());
-	u_aux2->escalar(-sin(ang));
+	u_aux2->escalar(sin(ang));
 	n_aux2->escalar(cos(ang));
 	u_aux2->sumar(n_aux2);
     //u = u';
