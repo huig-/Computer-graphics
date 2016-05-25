@@ -68,15 +68,22 @@
   <ItemGroup>
     <ClCompile Include="Abeto.cpp" />
     <ClCompile Include="Alamo.cpp" />
-    <ClCompile Include="Arbol.cpp" />
+    <ClCompile Include="Cilindro.cpp" />
     <ClCompile Include="Coche.cpp" />
     <ClCompile Include="Copa.cpp" />
+    <ClCompile Include="CopaDoble.cpp" />
     <ClCompile Include="CopaDobleEsferica.cpp" />
+    <ClCompile Include="Cubo.cpp" />
+    <ClCompile Include="Disco.cpp" />
+    <ClCompile Include="Esfera.cpp" />
     <ClCompile Include="Faro.cpp" />
+    <ClCompile Include="Foco.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Objeto3D.cpp" />
     <ClCompile Include="ObjetoCompuesto.cpp" />
+    <ClCompile Include="ObjetoCuadrico.cpp" />
     <ClCompile Include="Pino.cpp" />
+    <ClCompile Include="PuntoVector3D.cpp" />
     <ClCompile Include="Roble.cpp" />
     <ClCompile Include="Rueda.cpp" />
     <ClCompile Include="TAfin.cpp" />
@@ -85,14 +92,21 @@
   <ItemGroup>
     <ClInclude Include="Abeto.h" />
     <ClInclude Include="Alamo.h" />
-    <ClInclude Include="Arbol.h" />
+    <ClInclude Include="Cilindro.h" />
     <ClInclude Include="Coche.h" />
     <ClInclude Include="Copa.h" />
+    <ClInclude Include="CopaDoble.h" />
     <ClInclude Include="CopaDobleEsferica.h" />
+    <ClInclude Include="Cubo.h" />
+    <ClInclude Include="Disco.h" />
+    <ClInclude Include="Esfera.h" />
     <ClInclude Include="Faro.h" />
+    <ClInclude Include="Foco.h" />
     <ClInclude Include="Objeto3D.h" />
     <ClInclude Include="ObjetoCompuesto.h" />
+    <ClInclude Include="ObjetoCuadrico.h" />
     <ClInclude Include="Pino.h" />
+    <ClInclude Include="PuntoVector3D.h" />
     <ClInclude Include="Roble.h" />
     <ClInclude Include="Rueda.h" />
     <ClInclude Include="TAfin.h" />

@@ -4,7 +4,7 @@
 ObjetoCompuesto:: ObjetoCompuesto(int capacidad) {
 	hijos = new Objeto3D*[capacidad];
 	numHijos = 0;
-	capacidad = capacidad;
+	this->capacidad = capacidad;
 }
 
 ObjetoCompuesto:: ~ObjetoCompuesto() {

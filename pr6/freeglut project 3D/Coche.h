@@ -2,11 +2,15 @@
 #ifndef Coche_H_
 #define Coche_H_
 
-#include "Objeto3D.h"
+#include "ObjetoCompuesto.h"
 #include "Rueda.h"
 #include "Faro.h"
+#include "Cubo.h"
 
 class Coche: public ObjetoCompuesto {
-    public Coche(GLdouble rRueda, GLdouble rFaro, GLdouble aRueda, GLdouble aFaro, GLdouble lChasis);
+public: 
+	Coche(GLdouble rRueda, GLdouble rFaro, GLdouble aRueda, GLdouble aFaro, GLdouble lChasis);
+	void avanza(GLfloat inc);
+	void gira(GLfloat inc);
 };
 #endif
