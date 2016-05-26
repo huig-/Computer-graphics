@@ -7,6 +7,11 @@
 #include "Esfera.h"
 
 class Roble: public ObjetoCompuesto {
-public: Roble(GLdouble radioCopa, GLdouble baseTronco, GLdouble hTronco);
+public: 
+	Roble(GLdouble radioCopa, GLdouble baseTronco, GLdouble hTronco);
+	void dibuja();
+	void incrementaEspecular(GLboolean inc);
+private:
+	GLfloat especular;
 };
 #endif

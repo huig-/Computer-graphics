@@ -70,6 +70,12 @@ void initGL() {
 	buildSceneObjects();
 
 	glEnable(GL_LIGHTING); 
+	GLfloat amb[] = { 0.95, 0.95, 0.95, 1.0 };
+	GLfloat dif[] = {0.3, 0.9, 0.3, 1.0};
+	GLfloat spe[] = {1.0, 1.0, 1.0, 1.0};
+	glLightfv(GL_LIGHT3, GL_AMBIENT, amb);
+	glLightfv(GL_LIGHT3, GL_DIFFUSE, dif);
+	glLightfv(GL_LIGHT3, GL_SPECULAR, spe);
 	/*
     glEnable(GL_LIGHT0);
     GLfloat d[]={0.7f,0.5f,0.5f,1.0f};
@@ -99,6 +105,8 @@ void display(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
 
 	glMatrixMode(GL_MODELVIEW);	 
+	GLfloat pos[] = { 20.0, 20.0, 20.0, 1.0 };
+	glLightfv(GL_LIGHT3, GL_POSITION, pos);
 	glPushMatrix();
 	
 		// Rotating the scene
@@ -125,7 +133,7 @@ void display(void) {
 		// Drawing the scene
 		GLfloat amb[4];
 		if (ambiental) {
-			amb[0] = amb[1] = amb[2] = 0.2f;
+			amb[0] = amb[1] = amb[2] = 0.6f;
 		}
 		else {
 			amb[0] = amb[1] = amb[2] = 0.0f;
@@ -200,6 +208,10 @@ void key(unsigned char key, int x, int y){
 		//case '2': farola->setEnable(false); break;
 		case '1': glEnable(GL_LIGHT2); farola->setEnable(true); break;
 		case '2':  glDisable(GL_LIGHT2); farola->setEnable(false); break;
+		case 'y': glEnable(GL_LIGHT3); break;
+		case 'h': glDisable(GL_LIGHT3); break;
+		case 'I': roble->incrementaEspecular(true); break;
+		case 'o': roble->incrementaEspecular(false); break;
 		default:
 			need_redisplay = false;
 			break;

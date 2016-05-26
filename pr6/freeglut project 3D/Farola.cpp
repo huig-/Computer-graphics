@@ -16,9 +16,9 @@ Farola::Farola(GLdouble rP, GLdouble hP, GLdouble rB)
 
 void Farola::ilumina(GLfloat posX, GLfloat posY, GLfloat posZ)
 {
-    GLfloat amb[] = {0.6, 0.0, 0.6};
-	GLfloat dif[] = { 0.8, 0.0, 0.8 };
-	GLfloat spe[] = { 1.0, 1.0, 1.0 };
+    GLfloat amb[] = {0.2, 0.0, 0.2, 1.0};
+	GLfloat dif[] = { 0.8, 0.0, 0.8, 1.0 };
+	GLfloat spe[] = { 1.0, 1.0, 1.0, 1.0 };
 	GLfloat amb_no[] = { 0.0f, 0.0f, 0.0f };
     GLfloat position[] = {posX, posY, posZ, 1.0f};
     GLfloat spdirection[] = {0.0f, 0.0f, 0.0f, 1.0f};
