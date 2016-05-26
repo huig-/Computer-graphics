@@ -12,6 +12,7 @@
 #include "Abeto.h"
 #include "Alamo.h"
 #include "Roble.h"
+#include "Farola.h"
 using namespace std;
 
 // Freeglut parameters
@@ -20,6 +21,7 @@ using namespace std;
 
 // Viewport size
 int WIDTH= 500, HEIGHT= 500;
+boolean ambiental = false;
 
 // Viewing frustum parameters
 GLdouble xRight=10, xLeft=-xRight, yTop=10, yBot=-yTop, N=1, F=1000;
@@ -36,6 +38,7 @@ Pino* pino;
 Abeto* abeto;
 Roble* roble;
 Alamo* alamo;
+Farola* farola;
 
 void buildSceneObjects() {	 
     angX=0.0f;
@@ -46,11 +49,13 @@ void buildSceneObjects() {
     abeto = new Abeto(1.2f, 4.0f, 0.35f, 3.0f);
     roble = new Roble(1.5f, 0.35f, 4.0f);
     alamo = new Alamo(2.0f, 1.8f, 0.3f, 4.0f);
+	farola = new Farola(0.2f, 6.0f, 1.0f);
 
     pino->traslada(8.0f, 0.0f, -3.0f);
     abeto->traslada(8.0f, 0.0f, 8.0f);
     roble->traslada(-5.8f,0.0f, 6.2f);
-    alamo->traslada(-2.0f, 0.0f, -9.2f);
+    alamo->traslada(-2.0f, 0.0f, -5.2f);
+	farola->traslada(-2.0f, 0.0f, -8.5f);
 }
 
 void initGL() {	 		 
@@ -64,7 +69,6 @@ void initGL() {
 
 	buildSceneObjects();
 
-	// Light0
 	glEnable(GL_LIGHTING); 
 	/*
     glEnable(GL_LIGHT0);
@@ -92,7 +96,7 @@ void initGL() {
  }
 
 void display(void) {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
 
 	glMatrixMode(GL_MODELVIEW);	 
 	glPushMatrix();
@@ -118,12 +122,22 @@ void display(void) {
 			glVertex3f(0, 0, 20);	     
 		glEnd();
 		 		
-		// Drawing the scene	
+		// Drawing the scene
+		GLfloat amb[4];
+		if (ambiental) {
+			amb[0] = amb[1] = amb[2] = 0.2f;
+		}
+		else {
+			amb[0] = amb[1] = amb[2] = 0.0f;
+		}
+		amb[3] = 1.0f;
+		glLightModelfv(GL_LIGHT_MODEL_AMBIENT, amb);
 		alamo->dibuja();
 		roble->dibuja();
 		pino->dibuja();
 		abeto->dibuja();
 		coche->dibuja();
+		farola->dibuja();
 
 	glPopMatrix();
 
@@ -178,6 +192,14 @@ void key(unsigned char key, int x, int y){
 		case 'm': coche->avanza(-1.0f); break;
 		case 'i': coche->gira(1.0f); break;
 		case 'r': coche->gira(-1.0f); break;
+		case 'u': ambiental = true; break;
+		case 'j': ambiental = false; break;
+		case 't': glEnable(GL_LIGHT1); break;
+		case 'g': glDisable(GL_LIGHT1); break;
+		//case '1': farola->setEnable(true); break;
+		//case '2': farola->setEnable(false); break;
+		case '1': glEnable(GL_LIGHT2); farola->setEnable(true); break;
+		case '2':  glDisable(GL_LIGHT2); farola->setEnable(false); break;
 		default:
 			need_redisplay = false;
 			break;
