@@ -10,6 +10,8 @@ Camara::Camara() {
     left=-10; right=-left; bottom=-10; top=-bottom; 
 	Near=1; Far=1000;
 	fovy=5; aspect=2.5; 
+
+	ortho = true;
 	  
 	setView();  
 	setProjection();
@@ -38,8 +40,11 @@ void Camara::setProjection() {
 	//Define la matriz de proyección con el comando 
 	//glOrtho() o glFrustum()/gluPerspective()	 
 	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	glOrtho(left, right, bottom, top, Near, Far);
+	glLoadIdentity(); 
+	if (ortho)
+		glOrtho(left, right, bottom, top, Near, Far);
+	else
+		glFrustum(left, right, bottom, top, Near, Far);
 }
 
 void Camara::setModelViewMatrix() {
@@ -186,4 +191,24 @@ void Camara::yaw(float ang) {
 	u = u_aux;
 	n = u_aux2;
     setModelViewMatrix();
+}
+
+void Camara::zoom(GLdouble factor) {
+	GLdouble width = right - left;
+	GLdouble height = top - bottom;
+	GLdouble depth = Far - Near;
+
+	GLdouble newWidth = width / factor, newHeight = height / factor, newDepth = depth / factor;
+	left = look->getX() - newWidth / 2.0;
+	right = look->getX() + newWidth / 2.0;
+	bottom = look->getY() - newHeight / 2.0;
+	top = look->getY() + newHeight / 2.0;
+	//Near = look->getZ() - newDepth / 2.0;
+	//Far = look->getZ() + newDepth / 2.0;
+	setProjection();
+}
+
+void Camara::setOrtho(GLboolean b)
+{
+	this->ortho = b;
 }

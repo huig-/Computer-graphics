@@ -77,9 +77,7 @@ void display(void) {
 	
 		// Rotating the scene
 	
-		glRotatef(angX, 1.0f, 0.0f, 0.0f);
-        glRotatef(angY, 0.0f, 1.0f, 0.0f);
-        glRotatef(angZ, 0.0f, 0.0f, 1.0f);
+		
 		
 		// Drawing the scene
 		if (baldosas) embaldosar();
@@ -212,10 +210,16 @@ void desembaldosar() {
 
 void drawScene(GLint c) {
 
+	
+
 	if (c == 1) { cam->frontal(); }
 	else if (c == 0) { cam->lateral(); }
 	else if (c == 2) { cam->cenital(); }
 	else if (c == 3) { cam->rincon(); }
+
+	glRotatef(angX, 1.0f, 0.0f, 0.0f);
+	glRotatef(angY, 0.0f, 1.0f, 0.0f);
+	glRotatef(angZ, 0.0f, 0.0f, 1.0f);
 
 	glLineWidth(1.5f);
 	// Drawing axes
