@@ -10,6 +10,7 @@ class Camara {
         GLfloat left, right, bottom, top, Near, Far;                
         GLdouble fovy, aspect; 		 
 		GLfloat angleX, angleY, angleZ;
+		GLboolean ortho;
 		void setView();	
 		void setCameraCoordinateSystem();
         void setModelViewMatrix();
@@ -28,7 +29,9 @@ class Camara {
 		void roll(float ang);
         void pitch(float ang);
         void yaw(float ang);      
+		void Camara::zoom(GLdouble factor);
 		void setAngle(GLfloat angle);
+		void setOrtho(GLboolean b);
 		GLfloat getAngle();
 };
 #endif

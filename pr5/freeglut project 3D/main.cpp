@@ -45,13 +45,12 @@ void buildSceneObjects() {
 	pino = new Pino(1.2f, 4.0f, 0.35f, 4.5f);
     abeto = new Abeto(1.2f, 4.0f, 0.35f, 3.0f);
     roble = new Roble(1.5f, 0.35f, 4.0f);
-    alamo = new Alamo(2.0f, 1.8f, 0.35f, 4.0f);
+    alamo = new Alamo(2.0f, 1.8f, 0.3f, 4.0f);
 
-    coche->traslada(0.0f, 2.5f, 0.0f);
     pino->traslada(8.0f, 0.0f, -3.0f);
     abeto->traslada(8.0f, 0.0f, 8.0f);
-    roble->traslada(-5.8f,0.0f,4.2f);
-    alamo->traslada(-2.0f, 0.0f, -1.2f);
+    roble->traslada(-5.8f,0.0f, 6.2f);
+    alamo->traslada(-2.0f, 0.0f, -9.2f);
 }
 
 void initGL() {	 		 
@@ -174,6 +173,10 @@ void key(unsigned char key, int x, int y){
 		case 'x': angY=angY-5; break;
 		case 'd': angZ=angZ+5; break;
 		case 'c': angZ=angZ-5; break;  
+		case 'n': coche->avanza(1.0f); break;
+		case 'm': coche->avanza(-1.0f); break;
+		case 'i': coche->gira(1.0f); break;
+		case 'r': coche->gira(-1.0f); break;
 		default:
 			need_redisplay = false;
 			break;

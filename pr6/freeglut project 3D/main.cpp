@@ -12,6 +12,7 @@
 #include "Abeto.h"
 #include "Alamo.h"
 #include "Roble.h"
+#include "Farola.h"
 using namespace std;
 
 // Freeglut parameters
@@ -20,6 +21,7 @@ using namespace std;
 
 // Viewport size
 int WIDTH= 500, HEIGHT= 500;
+boolean ambiental = false;
 
 // Viewing frustum parameters
 GLdouble xRight=10, xLeft=-xRight, yTop=10, yBot=-yTop, N=1, F=1000;
@@ -36,22 +38,24 @@ Pino* pino;
 Abeto* abeto;
 Roble* roble;
 Alamo* alamo;
+Farola* farola;
 
 void buildSceneObjects() {	 
     angX=0.0f;
     angY=0.0f;
     angZ=0.0f;
     coche = new Coche(0.7f, 0.5f, 1.3f, 0.4f, 2.5f);
-    pino = new Pino(1.2f, 4.0f, 0.35f, 4.5f);
+	pino = new Pino(1.2f, 4.0f, 0.35f, 4.5f);
     abeto = new Abeto(1.2f, 4.0f, 0.35f, 3.0f);
     roble = new Roble(1.5f, 0.35f, 4.0f);
-    alamo = new Alamo(2.0f, 1.8f, 0.35f, 4.0f);
+    alamo = new Alamo(2.0f, 1.8f, 0.3f, 4.0f);
+	farola = new Farola(0.2f, 6.0f, 1.0f);
 
-    coche->traslada(0.0f, 2.5f, 0.0f);
     pino->traslada(8.0f, 0.0f, -3.0f);
     abeto->traslada(8.0f, 0.0f, 8.0f);
-    roble->traslada(-5.8f,0.0f,4.2f);
-    alamo->traslada(-2.0f, 0.0f, -1.2f);
+    roble->traslada(-5.8f,0.0f, 6.2f);
+    alamo->traslada(-2.0f, 0.0f, -5.2f);
+	farola->traslada(-2.0f, 0.0f, -8.5f);
 }
 
 void initGL() {	 		 
@@ -65,8 +69,14 @@ void initGL() {
 
 	buildSceneObjects();
 
-	// Light0
-	glEnable(GL_LIGHTING);  
+	glEnable(GL_LIGHTING); 
+	GLfloat amb[] = { 0.95, 0.95, 0.95, 1.0 };
+	GLfloat dif[] = {0.3, 0.9, 0.3, 1.0};
+	GLfloat spe[] = {1.0, 1.0, 1.0, 1.0};
+	glLightfv(GL_LIGHT3, GL_AMBIENT, amb);
+	glLightfv(GL_LIGHT3, GL_DIFFUSE, dif);
+	glLightfv(GL_LIGHT3, GL_SPECULAR, spe);
+	/*
     glEnable(GL_LIGHT0);
     GLfloat d[]={0.7f,0.5f,0.5f,1.0f};
     glLightfv(GL_LIGHT0, GL_DIFFUSE, d);
@@ -75,7 +85,7 @@ void initGL() {
 	GLfloat s[]={1.0f,1.0f,1.0f,1.0f};
     glLightfv(GL_LIGHT0, GL_SPECULAR, s);
 	GLfloat p[]={25.0f, 25.0f, 25.0f, 1.0f};	 
-	glLightfv(GL_LIGHT0, GL_POSITION, p);
+	glLightfv(GL_LIGHT0, GL_POSITION, p);*/
 
 	// Camera set up
 	glMatrixMode(GL_MODELVIEW);
@@ -92,9 +102,11 @@ void initGL() {
  }
 
 void display(void) {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
 
 	glMatrixMode(GL_MODELVIEW);	 
+	GLfloat pos[] = { 20.0, 20.0, 20.0, 1.0 };
+	glLightfv(GL_LIGHT3, GL_POSITION, pos);
 	glPushMatrix();
 	
 		// Rotating the scene
@@ -117,19 +129,23 @@ void display(void) {
 			glVertex3f(0, 0, 0);
 			glVertex3f(0, 0, 20);	     
 		glEnd();
-
-		//Lights
-		glLightf(GL_LIGHT2, GL_POSITION, {1.0f, 1.0f, 0.0f, 0.0f});
-		glLightf(GL_LIGHT2, GL_AMBIENT, {0.0f, 0.0f, 0.0f, 1.0f});
-		glLightf(GL_LIGHT2, GL_DIFFUSE, {0.0, 0.4f, 0.0f, 1.0f});
-		glEnable(GL_LIGHT2);
-
-		// Drawing the scene	
+		 		
+		// Drawing the scene
+		GLfloat amb[4];
+		if (ambiental) {
+			amb[0] = amb[1] = amb[2] = 0.6f;
+		}
+		else {
+			amb[0] = amb[1] = amb[2] = 0.0f;
+		}
+		amb[3] = 1.0f;
+		glLightModelfv(GL_LIGHT_MODEL_AMBIENT, amb);
 		alamo->dibuja();
 		roble->dibuja();
 		pino->dibuja();
 		abeto->dibuja();
 		coche->dibuja();
+		farola->dibuja();
 
 	glPopMatrix();
 
@@ -180,6 +196,22 @@ void key(unsigned char key, int x, int y){
 		case 'x': angY=angY-5; break;
 		case 'd': angZ=angZ+5; break;
 		case 'c': angZ=angZ-5; break;  
+		case 'n': coche->avanza(1.0f); break;
+		case 'm': coche->avanza(-1.0f); break;
+		case 'i': coche->gira(1.0f); break;
+		case 'r': coche->gira(-1.0f); break;
+		case 'u': ambiental = true; break;
+		case 'j': ambiental = false; break;
+		case 't': glEnable(GL_LIGHT1); break;
+		case 'g': glDisable(GL_LIGHT1); break;
+		//case '1': farola->setEnable(true); break;
+		//case '2': farola->setEnable(false); break;
+		case '1': glEnable(GL_LIGHT2); farola->setEnable(true); break;
+		case '2':  glDisable(GL_LIGHT2); farola->setEnable(false); break;
+		case 'y': glEnable(GL_LIGHT3); break;
+		case 'h': glDisable(GL_LIGHT3); break;
+		case 'I': roble->incrementaEspecular(true); break;
+		case 'o': roble->incrementaEspecular(false); break;
 		default:
 			need_redisplay = false;
 			break;

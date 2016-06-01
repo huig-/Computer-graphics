@@ -170,6 +170,10 @@ void key(unsigned char key, int x, int y){
 		case '8': cam->roll(0.2); break;
 		case '9': cam->pitch(0.2); break;
 		case '0': cam->yaw(0.2); break;
+		case 'p': cam->setOrtho(true);  cam->setProjection(); break;
+		case 'q': cam->setOrtho(false); cam->setProjection(); break;
+		case 'v': cam->zoom(1.1f); break;
+		case 'b': cam->zoom(0.9f); break;
 		default:
 			need_redisplay = false;
 			break;

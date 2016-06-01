@@ -54,7 +54,7 @@ void TAfin:: postMultiplica(GLfloat* mm) {
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
 	glLoadMatrixf(m);
-	glMultMatrixf(m1);
+	glMultMatrixf(mm);
 	glGetFloatv(GL_MODELVIEW_MATRIX, m);
     glPopMatrix();
 }

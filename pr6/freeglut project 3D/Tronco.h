@@ -2,9 +2,11 @@
 #ifndef Tronco_H_ 
 #define Tronco_H_
 
-#include "Objeto3D.h"
+#include "ObjetoCompuesto.h"
+#include "Cilindro.h"
+#include "Disco.h"
 
 class Tronco: public ObjetoCompuesto {
-    public Tronco(GLdouble baseTronco, GLdouble hTronco);
+public: Tronco(GLdouble baseTronco, GLdouble hTronco);
 };
 #endif

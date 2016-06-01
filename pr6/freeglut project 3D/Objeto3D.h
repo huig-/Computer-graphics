@@ -23,6 +23,9 @@ class Objeto3D {
 		GLfloat getRed();
 		GLfloat getGreen();
 		GLfloat getBlue();
+		void setRed(GLfloat red);
+		void setGreen(GLfloat green);
+		void setBlue(GLfloat blue);
 };
 
 #endif

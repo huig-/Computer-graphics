@@ -1,30 +1,41 @@
  
 #include "Foco.h"
-//TODO pos tiene un ultimo dato que indica si es local o direccional: UTILIZAMOS LOCAL?
-Foco::Foco(GLfloat pos[3], GLfloat dir[3])
+
+Foco::Foco(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat dirX, GLfloat dirY, GLfloat dirZ)
 {
-    this->pos = {pos[0], pos[1], pos[2], 1.0};
-    this->dir = dir;
-    glLightfv(GL_LIGHT0, GL_POSITION, this->pos);
-    glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 45.0);
-    glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, this->dir);
-    glLightf(GL_LIGHT0, GL_SPOT_EXPONENT, 4.0);
-    //Color
-    GLfloat dif0[] = { 1.0, 1.0, 0.0, 1.0};
-    GLfloat esp0[] = { 1.0, 1.0, 0.0, 1.0};
-    glLightfv(GL_LIGHT0, GL_DIFFUSE, dif0);
-    glEnable(GL_LIGHT0);
-    //glLightfv(GL_LIGHT0, GL_SPECULAR, esp0);
+	this->posX = posX; this->posY = posY; this->posZ = posZ;
+	this->dirX = dirX; this->dirY = dirY; this->dirZ = dirZ;
+	this->activo = true;
 }
 
-Foco::setDir(GLfloat dir[3]) 
+void Foco::setDir(GLfloat dirX, GLfloat dirY, GLfloat dirZ) 
 {
-    this->dir = dir;
-    glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, this->dir);
+	this->dirX = dirX; this->dirY = dirY; this->dirZ = dirZ;
+	GLfloat d[] = { dirX, dirY, dirZ };
+    glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, d);
 }
 
-Foco::setPos(GLfloat pos[3])
+void Foco::setPos(GLfloat posX, GLfloat posY, GLfloat posZ)
 {
-    this->pos = {pos[0], pos[1], pos[2], 1.0};
-    glLightfv(GL_LIGHT0, GL_POSITION, this->pos);
+	this->posX = posX; this->posY = posY; this->posZ = posZ;
+	GLfloat p[] = { posX, posY, posZ, 1.0f };
+    glLightfv(GL_LIGHT1, GL_POSITION, p);
+}
+
+void Foco::activa(GLboolean enable)
+{
+	this->activo = enable;
+	GLfloat p[] = { posX, posY, posZ, 1.0f };
+	GLfloat d[] = { dirX, dirY, dirZ };
+	glLightfv(GL_LIGHT1, GL_POSITION, p);
+	glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 45.0);
+	glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, d);
+	glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, 4.0);
+	//Color
+	GLfloat dif0[] = { 1.0, 1.0, 0.0, 1.0 };
+	GLfloat esp0[] = { 1.0, 1.0, 0.0, 1.0 };
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, dif0);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, esp0);
+	if (enable) glEnable(GL_LIGHT1);
+	else glDisable(GL_LIGHT1);
 }
